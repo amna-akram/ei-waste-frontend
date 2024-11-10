@@ -30,13 +30,13 @@ function AppWrapper() {
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
           <Toolbar />
           <Routes>
-            <Route path="/" element={<Worker />} />
             <Route path="/dashboard" element={<Worker />} />
             <Route path="/reports" element={<Report userRole={userRole} department={department} />} />
             <Route path="/team" element={<div>Team Content</div>} />
             <Route path="/tasks" element={<div>Tasks Content</div>} />
             <Route path="/users" element={<div>User Management Content</div>} />
             <Route path="/settings" element={<div>Settings Content</div>} />
+            <Route path="/" element={<Worker />} />
           </Routes>
         </Box>
       </Box>
