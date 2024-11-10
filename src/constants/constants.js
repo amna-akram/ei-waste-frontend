@@ -10,9 +10,9 @@ export const menuItemsByRole = {
         { name: "Dashboard", path: "/dashboard" },
         { name: "Tasks", path: "/tasks" },
     ],
-    master: [
+    supervisor: [
         { name: "Dashboard", path: "/dashboard" },
-        { name: "User Management", path: "/users" },
+        { name: "Reports", path: "/reports" },
         { name: "Settings", path: "/settings" },
     ],
 };

@@ -1,13 +1,14 @@
 // src/components/SideNav.js
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Drawer, List, ListItem, ListItemIcon, ListItemText, Toolbar, Typography, Divider, Avatar, Box } from '@mui/material';
 import { menuItemsByRole } from '../constants/constants';
 
 const drawerWidth = 240;
 
 const SideNav = ({ userRole }) => {
+    const location = useLocation();
     const menuItems = menuItemsByRole[userRole] || [];
 
     return (
@@ -42,8 +43,11 @@ const SideNav = ({ userRole }) => {
                         key={index}
                         sx={{
                             color: '#ffffff',
-                            '&:hover': { backgroundColor: '#ffffff22' },
+                            backgroundColor: location.pathname === item.path ? '#1E90FF' : 'transparent',
+                            '&:hover': { backgroundColor: '#1E90FF22' },
                             paddingLeft: 3,
+                            borderRadius: 1,
+                            transition: 'background-color 0.3s',
                         }}
                     >
                         <ListItemIcon sx={{ color: '#ffffff' }}>{item.icon}</ListItemIcon>
