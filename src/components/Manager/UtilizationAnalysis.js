@@ -1,5 +1,3 @@
-// src/components/UtilizationAnalysis.js
-
 import React, { useState, useMemo } from 'react';
 import { Box, Typography, Paper, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import DatePicker from 'react-datepicker';
@@ -8,15 +6,48 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 import { format } from 'date-fns';
 
 const utilizationData = [
-    { date: '2024-01-01', product: 'hope', employees: 50, predictedWorkload: 500, actualWorkload: 480, efficiency: 96 },
-    { date: '2024-01-02', product: 'hope', employees: 48, predictedWorkload: 480, actualWorkload: 470, efficiency: 97.9 },
-    { date: '2024-01-03', product: 'faith', employees: 52, predictedWorkload: 520, actualWorkload: 510, efficiency: 98.1 },
-    { date: '2024-01-04', product: 'faith', employees: 49, predictedWorkload: 490, actualWorkload: 480, efficiency: 97.9 },
-    { date: '2024-01-05', product: 'hope', employees: 47, predictedWorkload: 470, actualWorkload: 460, efficiency: 97.8 },
+    { date: '2024-01-01', product: 'hope', employees: 50, predictedWorkload: 450, actualWorkload: 430, efficiency: 95.5 },
+    { date: '2024-01-05', product: 'hope', employees: 50, predictedWorkload: 460, actualWorkload: 450, efficiency: 97.8 },
+    { date: '2024-01-10', product: 'hope', employees: 51, predictedWorkload: 480, actualWorkload: 460, efficiency: 95.8 },
+    { date: '2024-01-15', product: 'hope', employees: 52, predictedWorkload: 500, actualWorkload: 480, efficiency: 96.0 },
+    { date: '2024-01-20', product: 'hope', employees: 52, predictedWorkload: 520, actualWorkload: 500, efficiency: 96.2 },
+    { date: '2024-01-25', product: 'hope', employees: 53, predictedWorkload: 540, actualWorkload: 530, efficiency: 98.1 },
+    { date: '2024-01-30', product: 'hope', employees: 54, predictedWorkload: 560, actualWorkload: 550, efficiency: 98.2 },
+    { date: '2024-01-01', product: 'faith', employees: 49, predictedWorkload: 500, actualWorkload: 495, efficiency: 99 },
+    { date: '2024-01-05', product: 'faith', employees: 49, predictedWorkload: 505, actualWorkload: 500, efficiency: 98.8 },
+    { date: '2024-01-10', product: 'faith', employees: 50, predictedWorkload: 510, actualWorkload: 500, efficiency: 98.0 },
+    { date: '2024-01-15', product: 'faith', employees: 50, predictedWorkload: 520, actualWorkload: 510, efficiency: 98.2 },
+    { date: '2024-01-20', product: 'faith', employees: 51, predictedWorkload: 530, actualWorkload: 520, efficiency: 98.5 },
+    { date: '2024-01-25', product: 'faith', employees: 51, predictedWorkload: 535, actualWorkload: 530, efficiency: 99.0 },
+    { date: '2024-01-30', product: 'faith', employees: 52, predictedWorkload: 540, actualWorkload: 535, efficiency: 98.8 },
+    { date: '2024-02-01', product: 'hope', employees: 54, predictedWorkload: 550, actualWorkload: 530, efficiency: 96.4 },
+    { date: '2024-02-05', product: 'hope', employees: 53, predictedWorkload: 540, actualWorkload: 520, efficiency: 96.3 },
+    { date: '2024-02-10', product: 'hope', employees: 52, predictedWorkload: 530, actualWorkload: 510, efficiency: 96.2 },
+    { date: '2024-02-15', product: 'hope', employees: 51, predictedWorkload: 520, actualWorkload: 500, efficiency: 96.1 },
+    { date: '2024-02-20', product: 'hope', employees: 50, predictedWorkload: 510, actualWorkload: 490, efficiency: 96.0 },
+    { date: '2024-02-25', product: 'hope', employees: 49, predictedWorkload: 500, actualWorkload: 480, efficiency: 95.8 },
+    { date: '2024-02-01', product: 'faith', employees: 52, predictedWorkload: 540, actualWorkload: 530, efficiency: 98.0 },
+    { date: '2024-02-05', product: 'faith', employees: 53, predictedWorkload: 550, actualWorkload: 540, efficiency: 98.2 },
+    { date: '2024-02-10', product: 'faith', employees: 54, predictedWorkload: 560, actualWorkload: 550, efficiency: 98.4 },
+    { date: '2024-02-15', product: 'faith', employees: 54, predictedWorkload: 570, actualWorkload: 560, efficiency: 98.6 },
+    { date: '2024-02-20', product: 'faith', employees: 55, predictedWorkload: 580, actualWorkload: 570, efficiency: 98.8 },
+    { date: '2024-02-25', product: 'faith', employees: 56, predictedWorkload: 590, actualWorkload: 580, efficiency: 99.0 },
+    { date: '2024-03-01', product: 'hope', employees: 50, predictedWorkload: 480, actualWorkload: 470, efficiency: 97.9 },
+    { date: '2024-03-05', product: 'hope', employees: 49, predictedWorkload: 470, actualWorkload: 460, efficiency: 97.8 },
+    { date: '2024-03-10', product: 'hope', employees: 48, predictedWorkload: 460, actualWorkload: 450, efficiency: 97.5 },
+    { date: '2024-03-15', product: 'hope', employees: 47, predictedWorkload: 450, actualWorkload: 440, efficiency: 97.0 },
+    { date: '2024-03-20', product: 'hope', employees: 46, predictedWorkload: 440, actualWorkload: 430, efficiency: 96.5 },
+    { date: '2024-03-25', product: 'hope', employees: 45, predictedWorkload: 430, actualWorkload: 420, efficiency: 96.0 },
+    { date: '2024-03-01', product: 'faith', employees: 52, predictedWorkload: 550, actualWorkload: 540, efficiency: 98.2 },
+    { date: '2024-03-05', product: 'faith', employees: 53, predictedWorkload: 560, actualWorkload: 550, efficiency: 98.4 },
+    { date: '2024-03-10', product: 'faith', employees: 54, predictedWorkload: 570, actualWorkload: 565, efficiency: 99.1 },
+    { date: '2024-03-15', product: 'faith', employees: 54, predictedWorkload: 575, actualWorkload: 570, efficiency: 99.2 },
+    { date: '2024-03-20', product: 'faith', employees: 55, predictedWorkload: 580, actualWorkload: 570, efficiency: 98.8 },
+    { date: '2024-03-25', product: 'faith', employees: 55, predictedWorkload: 585, actualWorkload: 575, efficiency: 98.5 },
 ];
 
 const UtilizationAnalysis = ({ department }) => {
-    const [selectedProduct, setSelectedProduct] = useState('hope');
+    const [selectedProduct, setSelectedProduct] = useState('overall');
     const [startDate, setStartDate] = useState(new Date('2024-01-01'));
     const [endDate, setEndDate] = useState(new Date('2024-01-05'));
 
@@ -24,7 +55,7 @@ const UtilizationAnalysis = ({ department }) => {
         return utilizationData
             .filter(
                 (entry) =>
-                    entry.product === selectedProduct &&
+                    (selectedProduct === 'overall' || entry.product === selectedProduct) &&
                     new Date(entry.date) >= startDate &&
                     new Date(entry.date) <= endDate
             )
@@ -55,6 +86,7 @@ const UtilizationAnalysis = ({ department }) => {
                         onChange={(e) => setSelectedProduct(e.target.value)}
                         label="Select Product"
                     >
+                        <MenuItem value="overall">Overall</MenuItem>
                         <MenuItem value="hope">Hope</MenuItem>
                         <MenuItem value="faith">Faith</MenuItem>
                     </Select>
