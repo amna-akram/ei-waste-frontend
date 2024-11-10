@@ -20,7 +20,7 @@ const calculateMetrics = (data) => {
     });
 };
 
-const EfficiencyAnalysis = () => {
+const EfficiencyAnalysis = ({ department }) => {
     const [startDate, setStartDate] = useState(new Date('2024-01-01'));
     const [endDate, setEndDate] = useState(new Date('2024-05-01'));
     const [product, setProduct] = useState('hope');

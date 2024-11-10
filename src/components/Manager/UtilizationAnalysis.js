@@ -15,7 +15,7 @@ const utilizationData = [
     { date: '2024-01-05', product: 'hope', employees: 47, predictedWorkload: 470, actualWorkload: 460, efficiency: 97.8 },
 ];
 
-const UtilizationAnalysis = () => {
+const UtilizationAnalysis = ({ department }) => {
     const [selectedProduct, setSelectedProduct] = useState('hope');
     const [startDate, setStartDate] = useState(new Date('2024-01-01'));
     const [endDate, setEndDate] = useState(new Date('2024-01-05'));

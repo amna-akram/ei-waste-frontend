@@ -16,3 +16,5 @@ export const menuItemsByRole = {
         { name: "Settings", path: "/settings" },
     ],
 };
+
+export const API_ENDPOINT = "https://ei-waste-api.onrender.com/"

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Box, Tabs, Tab } from '@mui/material';
 
 // Conditionally import components based on the userRole
-const Report = ({ userRole }) => {
+const Report = ({ userRole, department }) => {
     const [selectedTab, setSelectedTab] = useState(0);
 
     // Determine which components to use based on userRole
@@ -27,11 +27,11 @@ const Report = ({ userRole }) => {
     const renderTabContent = () => {
         switch (selectedTab) {
             case 0:
-                return <components.EfficiencyAnalysis />;
+                return <components.EfficiencyAnalysis department={department} />;
             case 1:
-                return <components.UtilizationAnalysis />;
+                return <components.UtilizationAnalysis department={department} />;
             case 2:
-                return <components.QualityAndWasteAnalysis />;
+                return <components.QualityAndWasteAnalysis department={department} />;
             default:
                 return null;
         }
