@@ -7,6 +7,7 @@ import NavBar from './components/NavBar';
 import Report from './pages/Report';
 import Worker from './pages/Worker';
 
+
 function AppWrapper() {
   const query = useQuery();
   const userRole = query.get('userRole') || "supervisor";
@@ -29,7 +30,8 @@ function AppWrapper() {
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
           <Toolbar />
           <Routes>
-            <Route path="/dashboard" element={<div>Dashboard Content</div>} />
+            <Route path="/" element={<Worker />} />
+            <Route path="/dashboard" element={<Worker />} />
             <Route path="/reports" element={<Report userRole={userRole} department={department} />} />
             <Route path="/team" element={<div>Team Content</div>} />
             <Route path="/tasks" element={<div>Tasks Content</div>} />
