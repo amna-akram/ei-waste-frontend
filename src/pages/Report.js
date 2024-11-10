@@ -12,7 +12,6 @@ const Report = ({ userRole, department }) => {
             EfficiencyAnalysis: require('../components/Manager/EfficiencyAnalysis').default,
             UtilizationAnalysis: require('../components/Manager/UtilizationAnalysis').default,
             QualityAndWasteAnalysis: require('../components/Manager/WasteAnalysis').default,
-            CapacityManagement: require('../components/Manager/CapacityManagement').default,
         }
         : {
             EfficiencyAnalysis: require('../components/Master/EfficiencyAnalysis').default,
@@ -32,8 +31,6 @@ const Report = ({ userRole, department }) => {
                 return <components.UtilizationAnalysis department={department} />;
             case 2:
                 return <components.QualityAndWasteAnalysis department={department} />;
-            case 3:
-                return <components.CapacityManagement department={department} />;
             default:
                 return null;
         }
@@ -63,7 +60,6 @@ const Report = ({ userRole, department }) => {
                 <Tab label="Efficiency Analysis" />
                 <Tab label="Utilization Analysis" />
                 <Tab label="Waste Analysis" />
-                {userRole === "manager" && <Tab label="Capacity Management" />}
             </Tabs>
 
             {/* Tab Content */}

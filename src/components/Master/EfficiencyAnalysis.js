@@ -105,7 +105,7 @@ const EfficiencyAnalysis = () => {
     return (
         <Box sx={{ padding: 4 }}>
             <Typography variant="h4" gutterBottom>
-                Efficiency Metrics Report for {department}
+                Efficiency Metrics Report
             </Typography>
 
             {/* Overall Processing Efficiency Analysis */}
