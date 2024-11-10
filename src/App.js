@@ -10,7 +10,7 @@ import Worker from './pages/Worker';
 function AppWrapper() {
   const query = useQuery();
   const userRole = query.get('userRole') || "supervisor";
-  const department = query.get('department') || "general";
+  const department = query.get('department') || "cooking";
 
   if (userRole === "worker") {
     return (

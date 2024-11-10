@@ -100,7 +100,7 @@ const EfficiencyAnalysis = ({ department }) => {
     return (
         <Box sx={{ padding: 4 }}>
             <Typography variant="h4" gutterBottom>
-                Efficiency Metrics Report
+            Efficiency Metrics Report for {department}
             </Typography>
 
             {/* Filters */}
